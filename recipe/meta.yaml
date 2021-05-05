@@ -10,8 +10,9 @@ source:
   sha256: b463068f493305891f83056f8e46a3b38e8596a3c9251a3e2ff428720b852f63
 
 build:
-  number: 1
+  number: 0
   script: {{ PYTHON }} setup_sklearnex.py install --single-version-externally-managed --record=record.txt
+  skip: True    # [not (win64 or linux64 or osx)]
 
 requirements:
   host:
@@ -19,7 +20,7 @@ requirements:
     - setuptools
   run:
     - python
-    - daal4py ==2021.2.2
+    - daal4py {{ version }}
     - scikit-learn >=0.21
 
 test:
@@ -35,7 +36,7 @@ test:
 
 about:
   home: https://intel.github.io/scikit-learn-intelex
-  license: Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND MIT
+  license: Apache-2.0
   license_file:
     - LICENSE
     - doc/third-party-programs-sklearnex.txt
