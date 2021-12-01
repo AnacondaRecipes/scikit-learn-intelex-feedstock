@@ -12,8 +12,7 @@ source:
 build:
   number: 0
   script: {{ PYTHON }} setup_sklearnex.py install --single-version-externally-managed --record=record.txt
-  skip: True    # [not (win64 or linux64 or osx)]
-  skop: True    # [osx and arm64]
+  skip: True    # [not ((win or linux or osx) and x86_64)]
 
 requirements:
   host:
