@@ -25,7 +25,7 @@ requirements:
   run:
     - python
     - daal4py {{ version }}
-    - scikit-learn >=0.22
+    - scikit-learn <1.1
 
 test:
   requires:
