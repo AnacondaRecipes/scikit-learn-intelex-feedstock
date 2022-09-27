@@ -8,8 +8,6 @@ package:
 source:
   url: https://github.com/intel/scikit-learn-intelex/archive/{{ version }}.tar.gz
   sha256: a75acdc518f0af262a86952ee1040d5c8b9a9dbd4bf798fd974a917ee5b47e68
-  # patches:
-  #   - patches/0001-replace-test-memory-leaks-in-tests.patch
 
 build:
   number: 0
@@ -26,9 +24,8 @@ requirements:
     - setuptools
   run:
     - python
-    - scikit-learn >=0.22
-  run_constrained:
     - daal4py {{ version }}
+    - scikit-learn >=0.22
 
 test:
   requires:
@@ -45,19 +42,11 @@ test:
 about:
   home: https://intel.github.io/scikit-learn-intelex
   license: Apache-2.0
+  license_family: Apache
   license_file:
     - LICENSE
     - doc/third-party-programs-sklearnex.txt
   summary: Intel(R) Extension for Scikit-learn is a seamless way to speed up your Scikit-learn application.
-  description: |
-    <strong>LEGAL NOTICE: Use of this software package is subject to the
-    software license agreement (as set forth above, in the license section of
-    the installed Conda package and/or the README file) and all notices,
-    disclaimers or license terms for third party or open source software
-    included in or with the software.</strong>
-    <br/><br/>
-    EULA: <a href="https://opensource.org/licenses/Apache-2.0" target="_blank">Apache-2.0</a>
-    <br/><br/>
   dev_url: https://github.com/intel/scikit-learn-intelex
   doc_url: https://intel.github.io/scikit-learn-intelex
 
