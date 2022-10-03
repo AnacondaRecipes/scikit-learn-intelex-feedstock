@@ -8,8 +8,6 @@ package:
 source:
   url: https://github.com/intel/scikit-learn-intelex/archive/{{ version }}.tar.gz
   sha256: a75acdc518f0af262a86952ee1040d5c8b9a9dbd4bf798fd974a917ee5b47e68
-  patches:
-    - patches/0002-win-64-py37-distutils.patch
 
 build:
   number: 0
