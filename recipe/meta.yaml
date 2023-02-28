@@ -1,5 +1,5 @@
 {% set name = "scikit-learn-intelex" %}
-{% set version = "2021.6.0" %}
+{% set version = "2023.0.2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,25 +7,24 @@ package:
 
 source:
   url: https://github.com/intel/scikit-learn-intelex/archive/{{ version }}.tar.gz
-  sha256: a75acdc518f0af262a86952ee1040d5c8b9a9dbd4bf798fd974a917ee5b47e68
+  sha256: e289f49b34f2df3a3c5650c38a0d3080062169a9ba6e4bdbd154a4f0b982800a
 
 build:
   number: 0
   script: {{ PYTHON }} setup_sklearnex.py install --single-version-externally-managed --record=record.txt
-  skip: True    # [not ((win or linux or osx) and x86_64)]
-  skip: True    # [py<37]
+  skip: True    # [not ((win or linux) and x86_64)]
+  skip: True    # [py<38]
 
 requirements:
-  build:
-    - patch     # [unix]
-    - m2-patch  # [win]
   host:
     - python
+    - pip
     - setuptools
+    - wheel
   run:
     - python
     - daal4py {{ version }}
-    - scikit-learn <1.1
+    - scikit-learn
 
 test:
   requires:
@@ -37,16 +36,24 @@ test:
     - cd sklearnex
     - python -c "import sklearnex"
     - python -c "from sklearnex import patch_sklearn; patch_sklearn()"
-    - python -m pytest .
+    - python -m pytest --pyargs --verbose .
 
 about:
   home: https://intel.github.io/scikit-learn-intelex
-  license: Apache-2.0
-  license_family: Apache
+  license: Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND MIT
   license_file:
     - LICENSE
     - doc/third-party-programs-sklearnex.txt
   summary: Intel(R) Extension for Scikit-learn is a seamless way to speed up your Scikit-learn application.
+  description: |
+    <strong>LEGAL NOTICE: Use of this software package is subject to the
+    software license agreement (as set forth above, in the license section of
+    the installed Conda package and/or the README file) and all notices,
+    disclaimers or license terms for third party or open source software
+    included in or with the software.</strong>
+    <br/><br/>
+    EULA: <a href="https://opensource.org/licenses/Apache-2.0" target="_blank">Apache-2.0</a>
+    <br/><br/>
   dev_url: https://github.com/intel/scikit-learn-intelex
   doc_url: https://intel.github.io/scikit-learn-intelex
 
