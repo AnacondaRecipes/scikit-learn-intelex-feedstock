@@ -11,8 +11,7 @@ source:
 
 build:
   number: 0
-  script: {{ PYTHON }} setup_sklearnex.py install --single-version-externally-managed --record=record.txt
-  skip: True    # [not ((win or linux) and x86_64)]
+  skip: True    # [not ((win or linux or osx) and x86_64)]
   skip: True    # [py<38]
 
 requirements:
