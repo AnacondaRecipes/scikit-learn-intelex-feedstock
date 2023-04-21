@@ -29,4 +29,4 @@ fi
 
 export DAAL4PY_VERSION=$PKG_VERSION
 export MPIROOT=${PREFIX}
-${PYTHON} setup.py install $ARGS
+${PYTHON} setup_sklearnex.py install $ARGS
