@@ -20,7 +20,7 @@ if [ "${DAALROOT}" != "" ] && [ "${DALROOT}" == "" ] ; then
 fi
 
 if [ -z "${DALROOT}" ]; then
-    export DALROOT=${PREFIX}/include
+    export DALROOT=${PREFIX}
 fi
 
 if [ "$(uname)" == "Darwin" ]; then
