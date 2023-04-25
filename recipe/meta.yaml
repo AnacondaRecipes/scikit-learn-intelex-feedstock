@@ -17,6 +17,9 @@ build:
 requirements:
   host:
     - python
+    # scikit-learn-intelex requires `library_version_info.h` and should be in the `include/services` folder, 
+    # see https://github.com/intel/scikit-learn-intelex/blob/987b5102fba322d604f29a17db039301e6f8dfbc/scripts/version.py#L39
+    - dal-include {{ dal_version }}
     - pip
     - setuptools
     - wheel
