@@ -1,5 +1,6 @@
 {% set name = "scikit-learn-intelex" %}
 {% set version = "2023.1.1" %}
+{% set dal_version = "2023.1.1" %}
 
 package:
   name: {{ name|lower }}
