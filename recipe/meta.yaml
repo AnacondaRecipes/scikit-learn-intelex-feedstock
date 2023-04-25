@@ -13,9 +13,10 @@ build:
   number: 0
   skip: True    # [not ((win or linux or osx) and x86_64)]
   skip: True    # [py<38]
-  script_env:
-    - DALROOT="${PREFIX}"
-  script: {{ PYTHON }} setup_sklearnex.py install --single-version-externally-managed --record=record_sklearnex.txt
+  script: 
+    - export DALROOT="${PREFIX}"  # [not win]
+    - set DALROOT=%PREFIX%        # [win]
+    - {{ PYTHON }} setup_sklearnex.py install --single-version-externally-managed --record=record_sklearnex.txt
 
 requirements:
   host:
