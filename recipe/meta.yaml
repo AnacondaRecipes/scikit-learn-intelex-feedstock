@@ -1,6 +1,5 @@
 {% set name = "scikit-learn-intelex" %}
 {% set version = "2023.1.1" %}
-{% set dal_version = "2023.1.1" %}
 
 package:
   name: {{ name|lower }}
@@ -14,13 +13,16 @@ build:
   number: 0
   skip: True    # [not ((win or linux or osx) and x86_64)]
   skip: True    # [py<38]
+  script_env:
+    - DALROOT="${PREFIX}"
+  script: {{ PYTHON }} setup_sklearnex.py install --single-version-externally-managed --record=record_sklearnex.txt
 
 requirements:
   host:
     - python
     # scikit-learn-intelex requires `library_version_info.h` and should be in the `include/services` folder, 
     # see https://github.com/intel/scikit-learn-intelex/blob/987b5102fba322d604f29a17db039301e6f8dfbc/scripts/version.py#L39
-    - dal-include {{ dal_version }}
+    - dal-include {{ version }}
     - pip
     - setuptools
     - wheel
