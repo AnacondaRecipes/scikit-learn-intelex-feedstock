@@ -18,6 +18,7 @@ requirements:
   host:
     - python
     - daal4py {{ version }}
+    - mpich 4.1.1
     - pip
     - setuptools
     - wheel
